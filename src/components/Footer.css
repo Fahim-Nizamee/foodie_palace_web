@@ -1,0 +1,70 @@
+.footer{
+    background-color: rgb(22, 22, 22);
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top:1% ;
+    padding-bottom:1% ;
+    display: flex;
+    justify-content: space-between;
+    transition: all .50s ease-in-out;
+    
+}
+.d1{
+    color: white;
+    width: 40%;
+
+}
+.d2{
+    width: 40%;
+
+}
+.fa-facebook {
+    color: #4267B2;
+}
+
+.fa-instagram {
+    color: #d62976;
+}
+
+.fa-twitter {
+    color: #1DA1F2;
+}
+
+.fa-whatsapp {
+    color: #25D366;
+}
+
+.fa-envelope {
+    color: #EA4335;
+}
+.footer a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+@media screen and (max-width:1304px)
+{
+    .footer{
+        
+        padding-left: 4%;
+        padding-right: 4%;
+        transition: all .50s ease-in-out;
+        
+    }
+}
+@media screen and (max-width:703px)
+{
+    .footer{
+        
+             flex-direction: column; 
+             row-gap: 1em; 
+    }
+    .d1{
+        width: 100%; 
+
+    }
+    .d2{
+
+        width: 100%; 
+    }
+}

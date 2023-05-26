@@ -1,0 +1,106 @@
+.body{
+    overflow-y: auto;
+    height: 90vh;
+}
+.promHome{
+    color: rgb(227, 92, 19);
+    font-size: 150%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+    transition: all 0.5s ease-in-out;
+
+}
+.popular{
+    padding-left: 5%;
+    padding-right: 20%;
+    height: 40vh;
+    transition: all .5s ease-in-out;
+}
+.popular i{
+    color: rgb(227, 92, 19);
+}
+::placeholder{
+    font-size: large;
+    color: rgb(227, 92, 19);
+}
+.search{
+    margin-top:1em ;
+    margin-bottom:1em ;
+    margin-left: 15%;
+    margin-right: 15%;
+    width: 70%;
+    display: flex;
+    justify-items: center;
+    height: 2.5em;
+    border-radius: 10px;
+    border: 0.1px solid rgb(227, 92, 19);
+    font-size: large;
+    text-align: center;
+    transition: all .5s ease-in-out;
+    /* width: 30%; */
+}
+.sr{
+    position: sticky;
+    top: 0;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding-top: 1px; */
+    background-color: white;
+}
+.tableOfContent{
+    border: 0.5px solid rgb(227, 92, 19);
+    display: block;
+    position: fixed;
+    right: 30px;
+    top: 320px;
+    padding: 2em;
+    width: 12%;
+    font-size: large;
+    color: rgb(227, 92, 19);
+    transition: all .5s ease-in-out;
+    border-radius: 10px;
+}
+.tableOfContent a{
+    color:rgb(227, 92, 19) ;
+    transition: all .5s ease-in-out;
+}
+.tableOfContent a:hover{
+    color:rgb(34, 79, 243) ;
+}
+
+@media screen and (max-width:1200px) {
+    .tableOfContent{
+        display: none;
+    }
+    .popular {
+        padding-left: 4%;
+        padding-right: 4%;
+        transition: all .5s ease-in-out;
+    }
+    .promHome{
+        font-size: 100%;
+    }
+}
+
+@media screen and (max-width:500px) {
+
+    .search{
+        margin-left: 5%;
+        margin-right: 5%;
+        width: 90%;
+        display: flex;
+        justify-items: center;
+        height: 2.5em;
+        border-radius: 10px;
+        border: 0.1px solid rgb(227, 92, 19);
+        font-size: large;
+        text-align: center;
+        transition: all .5s ease-in-out;
+        /* width: 30%; */
+    }
+}
