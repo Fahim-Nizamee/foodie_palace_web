@@ -18,7 +18,7 @@ export default function Menu() {
         
         if (foodname && price && stock && category && image) {
             console.log(food)
-            axios.post('http://localhost:5000/new-food', food).then(response => {
+            axios.post('https://foodie-palace.onrender.com/new-food', food).then(response => {
                 if (response.data === 'added') {
                     alert('Successfully added')
                 }

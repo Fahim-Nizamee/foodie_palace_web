@@ -7,7 +7,7 @@ import '../img/menu-btn.png'
 export default function Navbar() {
   let navigate = useNavigate()
   const verify = () => {
-    fetch('http://localhost:5000/token', {
+    fetch('https://foodie-palace.onrender.com/token', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
