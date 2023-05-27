@@ -191,7 +191,7 @@ app.post('/signup', async (req, res) => {
     const { username, address, email, pass } = req.body
     await User.findOne({ email: email }, async (err, user) => {
         if (user) {
-            await res.send({ message: 'User already registered' })
+            res.send({ message: 'User already registered' })
         }
         else {
             const salt = await bcrypt.genSalt(10)
@@ -203,8 +203,8 @@ app.post('/signup', async (req, res) => {
                 password
 
             })
-            await res.send('Successfully registered')
-            setTimeout(3000)
+            res.send('Successfully registered')
+            
         }
     })
 })
