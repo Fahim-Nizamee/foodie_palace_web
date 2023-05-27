@@ -189,9 +189,9 @@ app.post('/login', async (req, res) => {
 app.post('/signup', async (req, res) => {
     console.log(req.body)
     const { username, address, email, pass } = req.body
-    User.findOne({ email: email }, async (err, user) => {
+    await User.findOne({ email: email }, async (err, user) => {
         if (user) {
-            res.send({ message: 'User already registered' })
+            await res.send({ message: 'User already registered' })
         }
         else {
             const salt = await bcrypt.genSalt(10)
@@ -203,7 +203,7 @@ app.post('/signup', async (req, res) => {
                 password
 
             })
-            res.send('Successfully registered')
+            await res.send('Successfully registered')
         }
     })
 })
