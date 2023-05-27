@@ -204,6 +204,7 @@ app.post('/signup', async (req, res) => {
 
             })
             await res.send('Successfully registered')
+            setTimeout(3000)
         }
     })
 })
