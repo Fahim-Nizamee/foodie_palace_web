@@ -28,14 +28,10 @@ export default function Menu() {
             })
         }
     }
-    const convert = (e) => {
-        var reader = new FileReader()
-        reader.readAsDataURL(e.target.files[0]);
-        reader.onload = () => {
-            console.log(reader.result)
-            food.image = reader.result
-        }
-    }
+    // const convert = (e) => {
+    //     food.image = e.target.value
+        
+    // }
     const onChange = (event) => {
         setFood({ ...food, [event.target.name]: event.target.value })
     }
@@ -58,7 +54,7 @@ export default function Menu() {
                         <option vlaue='Burger'>Burger</option>
                         <option vlaue='MeatBox'>MeatBox</option>
                     </select>
-                    <input className='form-control' type='file' accept='image/*' onChange={convert} required name='image' />
+                    <input className='form-control' type='text' name="image" placeholder='Link' value={food.image} onChange={onChange} required />
                     <button className='btn shadow' onClick={upload} >ADD</button>
 
                 </div>
