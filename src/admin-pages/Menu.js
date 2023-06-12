@@ -1,7 +1,6 @@
 import './Menu.css'
 import Navbar from '../admin-components/AdminNav'
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 export default function Menu() {
@@ -21,6 +20,7 @@ export default function Menu() {
             axios.post('https://foodie-palace.onrender.com/new-food', food).then(response => {
                 if (response.data === 'added') {
                     alert('Successfully added')
+                    window.location.reload(false)
                 }
                 else {
                     alert("failed")
@@ -45,8 +45,8 @@ export default function Menu() {
                     <input className='form-control' type='price' name="price" placeholder='Price' value={food.price} onChange={onChange} required />
                     <select className='form-control' type='select' required onChange={onChange} name='stock' value={food.stock}>
                         <option >Select stock status</option>
-                        <option value="true">Available</option>
-                        <option value="false">Unavailable</option>
+                        <option value="Aavailable">Available</option>
+                        <option value="Unavailable">Unavailable</option>
                     </select>
                     <select className='form-control' type='select' required onChange={onChange} name='category' value={food.category} >
                         <option >Select Category</option>

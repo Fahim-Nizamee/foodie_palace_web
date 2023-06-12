@@ -237,7 +237,7 @@ const foodSchema = new mongoose.Schema({
         required: true
     },
     stock: {
-        type: Boolean,
+        type: String,
         required: true
     },
     image: {
