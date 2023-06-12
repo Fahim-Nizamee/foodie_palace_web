@@ -52,9 +52,11 @@ export default function Menu() {
                         <option >Select Category</option>
                         <option vlaue='Rice' >Rice</option>
                         <option vlaue='Burger'>Burger</option>
-                        <option vlaue='MeatBox'>MeatBox</option>
+                        <option vlaue='Curry'>Curry</option>
+                        <option vlaue='Set Menu'>Set Menu</option>
+                        <option vlaue='Combo Meal'>Combo Meal</option>
                     </select>
-                    <input className='form-control' type='text' name="image" placeholder='Link' value={food.image} onChange={onChange} required />
+                    <input className='form-control' type='text' name="image" placeholder='Image Link' value={food.image} onChange={onChange} required />
                     <button className='btn shadow' onClick={upload} >ADD</button>
 
                 </div>
