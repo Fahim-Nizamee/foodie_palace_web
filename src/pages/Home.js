@@ -31,7 +31,7 @@ export default function Home() {
             </li>
             <li>
               <a href="">Chiken</a>
-            </li>
+            </li> 
           </ul>
         </div>
         <div className='promHome'>
