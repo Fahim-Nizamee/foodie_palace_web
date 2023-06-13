@@ -209,17 +209,18 @@ app.post('/signup', async (req, res) => {
     })
 })
 
-app.get('/food',async (req,res)=>{
+app.get('/food-data',async (req,res)=>{
     const fetched_data = await mongoose.connection.db.collection("foods")
     fetched_data.find({}).toArray(function(err,data){
+        if(err){
+            console.log(err)
+        }
+        else{
+            res.send(data)
+            console.log(data)
+        }
 
         
-
-        // if(err) console.log(err)
-        // else{
-        //     // console.log(data)
-        //     res.send(data)
-        // }
     })
 })
 
