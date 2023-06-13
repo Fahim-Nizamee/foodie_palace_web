@@ -2,6 +2,7 @@ import React from 'react'
 import './Home.css'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import Card from '../components/Card'
 export default function Home() {
   return (
     <div>
@@ -46,6 +47,9 @@ export default function Home() {
         </div>
         <div className='popular'>
           <h2>Set Menu</h2>
+          <div>
+            <Card/>
+          </div>
         </div>
         <div className='popular'>
           <h2>Combo Meal</h2>

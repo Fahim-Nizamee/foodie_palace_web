@@ -16,7 +16,7 @@
 .popular{
     padding-left: 5%;
     padding-right: 20%;
-    height: 40vh;
+    height: auto;
     transition: all .5s ease-in-out;
 }
 .popular i{

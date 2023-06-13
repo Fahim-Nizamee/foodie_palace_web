@@ -211,15 +211,22 @@ app.post('/signup', async (req, res) => {
 
 app.get('/food-data',async (req,res)=>{
     const fetched_data = await mongoose.connection.db.collection("foods")
-    fetched_data.find({}).toArray(function(err,data){
-        if(err){
-            console.log(err)
-        }
-        else{
-            res.send(data)
-            console.log(data)
-        }
-
+    fetched_data.find({}).toArray(async function(err,foodData){
+        const fetched_foodCategory = await mongoose.connection.db.collection("foodCategory")
+        fetched_foodCategory.find({}).toArray(async function(err,catData){
+            if(err){
+                console.log(err)
+            }
+            else{
+                try{
+                    res.send([foodData,catData])
+                }
+                catch(error){
+                    console.log(error.message)
+                    res,send("Server Error")
+                }
+            }
+        })
         
     })
 })
@@ -268,7 +275,7 @@ const Food = new mongoose.model("foods", foodSchema)
 //NEW FOOD========================
 app.post('/new-food', async (req, res) => {
 
-    const { foodname, price, stock, category, image } = req.body
+    const { foodname, price, stock, category, image } = req.body.data
     console.log(foodname)
 
     await Food.create({
@@ -278,7 +285,7 @@ app.post('/new-food', async (req, res) => {
         category, 
         image
     })
-    res.send('added')
+    res.send({ data: 'added' })
 
 
 

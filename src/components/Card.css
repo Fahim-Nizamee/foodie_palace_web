@@ -1,0 +1,32 @@
+.product-card {
+    position: relative;
+    height: 350px;
+    width: 250px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: solid 1px #e0e0e0;
+    padding: 10px;
+}
+
+.product-card-img {
+    height: 190px;
+    border-radius: 8px;
+    border: #e7e7e7 solid 1px ;
+    overflow: hidden;
+}
+
+.product-card img {
+    max-width: 5em;
+    overflow: hidden;
+    border-radius: 5px;
+
+}
+
+
+
+.product-card-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}

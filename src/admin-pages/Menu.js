@@ -14,23 +14,34 @@ export default function Menu() {
 
     const upload = () => {
         const { foodname, price, stock, category, image } = food
-        
+
         if (foodname && price && stock && category && image) {
             console.log(food)
-            axios.post('http://backend.wikivast.com/new-food', food).then(response => {
-                if (response.data === 'added') {
-                    alert('Successfully added')
-                    window.location.reload(false)
-                }
-                else {
-                    alert("failed")
-                }
+            fetch('http://backend.wikivast.com/new-food', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    data: food,
+                }),
             })
+                .then((res) => res.json())
+                .then((data) => {
+
+
+                    if (data.data === 'added') {
+                        alert('Successfully Added')
+                    }
+                    else{
+                        alert('failed')
+                    }
+                })
         }
     }
     // const convert = (e) => {
     //     food.image = e.target.value
-        
+
     // }
     const onChange = (event) => {
         setFood({ ...food, [event.target.name]: event.target.value })
