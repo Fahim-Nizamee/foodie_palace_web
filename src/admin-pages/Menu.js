@@ -17,7 +17,7 @@ export default function Menu() {
 
         if (foodname && price && stock && category && image) {
             console.log(food)
-            fetch('http://backend.wikivast.com/new-food', {
+            fetch('https://backend.wikivast.com/new-food', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -8,7 +8,7 @@ import Menu from '../admin-pages/Menu'
 export default function Navbar() {
   let navigate = useNavigate()
   const verify = () => {
-    fetch('http://backend.wikivast.com/token', { 
+    fetch('https://backend.wikivast.com/token', { 
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
