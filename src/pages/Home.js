@@ -11,11 +11,13 @@ export default function Home() {
 
   const load = async () => {
     axios.get('http://localhost:5000/food-data').then(response => {
-      setFoodItem(response.data[0])
-      setFoodCat(response.data[1])
+      
+        setFoodItem(response.data[0])
+        setFoodCat(response.data[1])
 
-      // console.log(response.data[0])
-    })
+        // console.log(response.data[0])
+      }
+  )
   }
   useEffect(() => {
     load()
@@ -35,10 +37,10 @@ export default function Home() {
               foodCat !== [] ? foodCat.map((data) => {
                 return (
                   <li>
-                    <a   href={`#${data.category}`}>{data.category}</a>
+                    <a href={`#${data.category}`}>{data.category}</a>
                   </li>
-              )
-              }):""
+                )
+              }) : ""
             }
           </ul>
         </div>
