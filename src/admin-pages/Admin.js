@@ -8,7 +8,7 @@ export default function Login() {
   const login = () => {
     const { email, password } = user
     if (email && password) {
-      axios.post('http://backend.wikivast.com/admin-login', user).then(response => {
+      axios.post('https://backend.wikivast.com/admin-login', user).then(response => {
         if (response.data.message === 'success') {
           localStorage.setItem("AdminAuthToken",response.data.authToken)
           localStorage.setItem("AdminUsername",response.data.username)
