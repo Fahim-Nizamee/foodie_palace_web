@@ -8,7 +8,7 @@ export default function Login() {
   const login = () => {
     const { email, password } = user
     if (email && password) {
-      axios.post('https://backend.wikivast.com/login', user).then(response => {
+      axios.post('http://localhost:5000/login', user).then(response => {
         if (response.data.message === 'success') {
           // alert('Successfully registered')
           localStorage.setItem("authToken", response.data.authToken)

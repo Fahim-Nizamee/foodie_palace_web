@@ -3,6 +3,7 @@ const cors = require("cors")
 const app = express()
 const port = 5000
 const mongoose = require('mongoose');
+const ObjectId = require('mongodb').ObjectId
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken");
 const { Double } = require("mongodb");
@@ -92,7 +93,7 @@ app.post('/admin-login', async (req, res) => {
                     }
                 }
                 const authToken = jwt.sign(data, jwtSecret, {
-                    expiresIn: '10000h'
+                    expiresIn: '10m'
                 })
                 // res.json({})
                 res.send({ message: 'success', authToken: authToken, username: user.username })
@@ -170,7 +171,7 @@ app.post('/login', async (req, res) => {
                     }
                 }
                 const authToken = jwt.sign(data, jwtSecret, {
-                    expiresIn: '10000h'
+                    expiresIn: '10m'
                 })
                 // res.json({})
                 res.send({ message: 'success', authToken: authToken, username: user.username })
@@ -189,7 +190,7 @@ app.post('/login', async (req, res) => {
 app.post('/signup', async (req, res) => {
     console.log(req.body)
     const { username, address, email, pass } = req.body
-    await User.findOne({ email: email }, async (err, user) => {
+    User.findOne({ email: email }, async (err, user) => {
         if (user) {
             res.send({ message: 'User already registered' })
         }
@@ -204,38 +205,79 @@ app.post('/signup', async (req, res) => {
 
             })
             res.send('Successfully registered')
-            
         }
     })
 })
 
-app.get('/food-data',async (req,res)=>{
+//home data
+app.get('/food-data', async (req, res) => {
     const fetched_data = await mongoose.connection.db.collection("foods")
-    fetched_data.find({}).toArray(async function(err,foodData){
-        const fetched_foodCategory = await mongoose.connection.db.collection("foodCategory")
-        fetched_foodCategory.find({}).toArray(async function(err,catData){
-            if(err){
-                console.log(err)
-            }
-            else{
-                try{
-                    res.send([foodData,catData])
+    const fetched_Cat = await mongoose.connection.db.collection("foodCategory")
+
+    fetched_data.find({}).toArray(function (err, data) {
+
+        if (err) {
+            console.log(err)
+        }
+        else {
+            fetched_Cat.find({}).toArray(function (err, catData) {
+
+                if (err) {
+                    console.log(err)
                 }
-                catch(error){
-                    console.log(error.message)
-                    res,send("Server Error")
+                else {
+                    res.send([data, catData])
                 }
-            }
-        })
-        
+
+
+            })
+        }
+
+
     })
+
+
 })
 
 
+app.get('/food/:id([0-9a-fA-F]{24})', async (req, res) => {
+    const id = req.params.id.trim()
+    const query = { _id: new ObjectId(id) }
+    const data = await mongoose.connection.db.collection("foods").findOne(query)
+    console.log(data)
+    res.send(data)
+})
 
+app.put('/update-food/:id([0-9a-fA-F]{24})', async (req, res) => {
+    const id = req.params.id.trim()
+    console.log('updating', id)
+    const updatedFood = req.body
+    const filter = { _id: new ObjectId(id) }
+    const options = { upsert: true }
+    const updateDoc = {
+        $set: {
+            foodname: updatedFood.foodname,
+            price: updatedFood.price,
+            stock: updatedFood.stock,
+            category: updatedFood.category,
+            image: updatedFood.image,
+        },
+    }
+    const result = await mongoose.connection.db.collection("foods").updateOne(
+        filter,
+        updateDoc,
+        options,
+    )
+    console.log('updating', id)
+    res.send('success')
+})
 
-
-
+app.delete('/delete-food/:id([0-9a-fA-F]{24})', async (req, res) => {
+    const id = req.params.id.trim()
+    const query = { _id: new ObjectId(id) }
+    const result = await mongoose.connection.db.collection("foods").deleteOne(query)
+    res.send('success')
+})
 
 
 
@@ -275,17 +317,17 @@ const Food = new mongoose.model("foods", foodSchema)
 //NEW FOOD========================
 app.post('/new-food', async (req, res) => {
 
-    const { foodname, price, stock, category, image } = req.body.data
+    const { foodname, price, stock, category, image } = req.body
     console.log(foodname)
 
     await Food.create({
-        foodname, 
-        price, 
-        stock, 
-        category, 
+        foodname,
+        price,
+        stock,
+        category,
         image
     })
-    res.send({ data: 'added' })
+    res.send('added')
 
 
 

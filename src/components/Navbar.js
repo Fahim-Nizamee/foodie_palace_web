@@ -6,29 +6,29 @@ import '../img/menu-btn.png'
 
 export default function Navbar() {
   let navigate = useNavigate()
-  const verify = () => {
-    fetch('https://backend.wikivast.com/token', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        token: localStorage.getItem("authToken"),
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
+  // const verify = () => {
+  //   fetch('http://localhost:5000/token', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       token: localStorage.getItem("authToken"),
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
         
         
-        if (data.data === 'exp') {
+  //       if (data.data === 'exp') {
 
-          localStorage.removeItem("authToken")
-          localStorage.removeItem("username")
-          // navigate('/login')
-        }
-      })
-  }
-  verify()
+  //         localStorage.removeItem("authToken")
+  //         localStorage.removeItem("username")
+  //         // navigate('/login')
+  //       }
+  //     })
+  // }
+  // verify()
   const logout = () => {
 
     localStorage.removeItem("authToken")

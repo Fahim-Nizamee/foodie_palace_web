@@ -7,29 +7,29 @@ import Menu from '../admin-pages/Menu'
 
 export default function Navbar() {
   let navigate = useNavigate()
-  const verify = () => {
-    fetch('https://backend.wikivast.com/token', { 
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        token: localStorage.getItem("AdminAuthToken"),
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
+  // const verify = () => {
+  //   fetch('http://localhost:5000/token', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       token: localStorage.getItem("AdminAuthToken"),
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
 
 
-        if (data.data === 'exp') {
+  //       if (data.data === 'exp') {
 
-          localStorage.removeItem("AdminAuthToken")
-          localStorage.removeItem("AdminUsername")
-          navigate('/admin')
-        }
-      })
-  }
-  verify()
+  //         localStorage.removeItem("AdminAuthToken")
+  //         localStorage.removeItem("AdminUsername")
+  //         navigate('/admin')
+  //       }
+  //     })
+  // }
+  // verify()
   const logout = () => {
 
     localStorage.removeItem("AdminAuthToken")
@@ -51,7 +51,7 @@ export default function Navbar() {
         <div className="nav-links">
           <ul>
             <li className="active"><Link >Home</Link></li>
-            <li><Link to='/menu' >Menu</Link></li>
+            {/* <li><Link to='/menu' >Menu</Link></li> */}
             <li><Link >Staff list</Link></li>
             {/* <li><Link >Food List</Link></li> */}
             <li><Link to={'/'}><i className='fa fa-home'></i></Link></li>

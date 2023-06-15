@@ -2,17 +2,21 @@ import React, { useState } from 'react'
 import { Link,useNavigate } from 'react-router-dom'
 import './Admin.css'
 import axios from 'axios'
+
+
 export default function Login() {
   let navigate = useNavigate()
   const [user, setuser] = useState({ email: "", password: "" })
   const login = () => {
     const { email, password } = user
     if (email && password) {
-      axios.post('https://backend.wikivast.com/admin-login', user).then(response => {
+      axios.post('http://localhost:5000/admin-login', user).then(response => {
         if (response.data.message === 'success') {
           localStorage.setItem("AdminAuthToken",response.data.authToken)
           localStorage.setItem("AdminUsername",response.data.username)
           console.log(localStorage.getItem("AdminAuthToken"))
+          
+          
           navigate('/admin-home')
         }
         else if(response.data === 'wrong pass') {

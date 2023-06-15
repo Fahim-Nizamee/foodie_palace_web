@@ -1,0 +1,39 @@
+.menuSec{
+    
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}
+
+.Menu{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+    align-items: center;
+    padding: 3em;
+
+}
+.button{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width:600px) {
+
+    .menuSec{
+        margin-left: 5%;
+        margin-right: 5%;
+        
+        transition: all .5s ease-in-out;
+        /* width: 30%; */
+    }
+    .button{
+        width: 70%;
+        display: flex;
+        justify-content: space-between;
+    }
+}
