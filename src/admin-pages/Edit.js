@@ -12,7 +12,7 @@ export default function Edit(props) {
   console.log(pid)
   const [food, setFood] = useState([])
   const load = async () => {
-    axios.get(`http://localhost:5000/food/${pid}`).then(response => {
+    axios.get(`https://foodie-palace.onrender.com/food/${pid}`).then(response => {
       setFood(response.data)
       console.log(response.data)
 
@@ -81,7 +81,7 @@ export default function Edit(props) {
   const update = () => {
     const { foodname, price, stock, category, image } = food
     if (foodname && price && stock && category && image) {
-      axios.put(`http://localhost:5000/update-food/${pid}`, food).then(response => {
+      axios.put(`https://foodie-palace.onrender.com/update-food/${pid}`, food).then(response => {
         console.log(response.data)
         window.location.reload(false);
       })
@@ -93,7 +93,7 @@ export default function Edit(props) {
   const Delete = () => {
     const { foodname, price, stock, category, image } = food
     if (foodname && price && stock && category && image) {
-      axios.delete(`http://localhost:5000/delete-food/${pid}`).then(response => {
+      axios.delete(`https://foodie-palace.onrender.com/delete-food/${pid}`).then(response => {
         if(response.data === 'success')
         {
           alert("Successfully Deleted")

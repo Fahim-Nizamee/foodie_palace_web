@@ -10,7 +10,7 @@ export default function Home() {
   const [search, setSearch] = useState('')
 
   const load = async () => {
-    axios.get('http://localhost:5000/food-data').then(response => {
+    axios.get('https://foodie-palace.onrender.com/food-data').then(response => {
       
         setFoodItem(response.data[0])
         setFoodCat(response.data[1])

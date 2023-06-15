@@ -15,7 +15,7 @@ export default function Menu() {
     const [foodItem, setFoodItem] = useState([])
 
     const load = async () => {
-        axios.get('http://localhost:5000/food-data').then(response => {
+        axios.get('https://foodie-palace.onrender.com/food-data').then(response => {
             setFoodItem(response.data[0])
             // console.log(response.data[0])
         })
@@ -29,7 +29,7 @@ export default function Menu() {
 
         if (foodname && price && stock && category && image) {
             console.log(food)
-            fetch('https://backend.wikivast.com/new-food', {
+            fetch('https://foodie-palace.onrender.com/new-food', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
