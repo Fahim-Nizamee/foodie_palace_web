@@ -94,17 +94,16 @@ export default function Edit(props) {
     const { foodname, price, stock, category, image } = food
     if (foodname && price && stock && category && image) {
       axios.delete(`https://foodie-palace.onrender.com/delete-food/${pid}`).then(response => {
-        if(response.data === 'success')
-        {
+        if (response.data === 'success') {
           alert("Successfully Deleted")
           navigate('/admin-home')
           window.location.reload(false);
         }
-        else{
+        else {
           alert('failed')
         }
 
-        
+
       })
     } else {
       alert('Invalid Entry')
@@ -114,57 +113,58 @@ export default function Edit(props) {
   return (
     <div>
       <Navbar />
-      <div className='menuSec'>
-        <div className='Menu shadow'>
-          <h1>Update Food</h1>
-          <input className='form-control' type='name' name="foodname" placeholder='Food Name' value={food.foodname} onChange={submitFoodname} required />
-          <input className='form-control' type='number' name="price" placeholder='Price' value={food.price} onChange={submitPrice} required />
-          <select className='form-control' type='select' required name='stock' value={food.stock} onChange={submitStock}>
-            <option >Select stock status</option>
-            <option value="Aavailable">Available</option>
-            <option value="Unavailable">Unavailable</option>
-          </select>
-          <select className='form-control' type='select' required name='category' value={food.category} onChange={submitCategory} >
-            <option >Select Category</option>
-            <option vlaue='Rice' >Rice</option>
-            <option vlaue='Burger'>Burger</option>
-            <option vlaue='Curry'>Curry</option>
-            <option vlaue='Set Menu'>Set Menu</option>
-            <option vlaue='Combo Meal'>Combo Meal</option>
-          </select>
-          <input className='form-control' type='text' name="image" placeholder='Image Link' value={food.image} required onChange={submitImage} />
-          <div className='button'>
-            <button className='btn shadow' onClick={update} >Update</button>
-            <button className='btn shadow' onClick={Delete} >Delete</button>
+      <div className='full-menu'>
+        <div class="product-card shadow">
+          <div className='ggs'>
+            <div class="product-card-img shadow">
+              <img src={food.image} alt="" />
+            </div>
+            <div>
+              <h2>{food.foodname}</h2>
+              <p><strong>Price :</strong> $ {food.price} </p>
+            </div>
+            {/* <div>
+            <h2>{props.foodname.length > 18 ? props.foodname.substring(0, 10) : props.foodname}</h2>
+            <p><strong>Price :</strong> $ {props.price} </p>
+          </div> */}
           </div>
+          <br />
+          <div class="product-card-buttons">
+
+            <button class=" btn btn-outline-primary shadow btns" id="add" href="#!" value="${ID}"
+              onclick="add(this)">Add</button>
+            <button class=" btn btn-outline-warning shadow btns" id="remove" href="#!" value="${ID}"
+              onclick="remove(this)">Remove</button>
+          </div>
+        </div>
+        <div className='menuSec'>
+          <div className='Menu shadow'>
+            <h1>Update Food</h1>
+            <input className='form-control' type='name' name="foodname" placeholder='Food Name' value={food.foodname} onChange={submitFoodname} required />
+            <input className='form-control' type='number' name="price" placeholder='Price' value={food.price} onChange={submitPrice} required />
+            <select className='form-control' type='select' required name='stock' value={food.stock} onChange={submitStock}>
+              <option >Select stock status</option>
+              <option value="Aavailable">Available</option>
+              <option value="Unavailable">Unavailable</option>
+            </select>
+            <select className='form-control' type='select' required name='category' value={food.category} onChange={submitCategory} >
+              <option >Select Category</option>
+              <option vlaue='Rice' >Rice</option>
+              <option vlaue='Burger'>Burger</option>
+              <option vlaue='Curry'>Curry</option>
+              <option vlaue='Set Menu'>Set Menu</option>
+              <option vlaue='Combo Meal'>Combo Meal</option>
+            </select>
+            <input className='form-control' type='text' name="image" placeholder='Image Link' value={food.image} required onChange={submitImage} />
+            <div className='button'>
+              <button className='btn shadow' onClick={update} >Update</button>
+              <button className='btn shadow' onClick={Delete} >Delete</button>
+            </div>
 
 
+          </div>
         </div>
       </div>
-      {/* <div className='menusec'>
-        <div className='menu shadow'>
-          <h1>Add new Food</h1>
-          <input className='form-control' type='name' name="foodname" placeholder='Food Name' value={food.foodname} onChange={onChange} required />
-          <input className='form-control' type='price' name="price" placeholder='Price' value={food.price} onChange={onChange} required />
-          <select className='form-control' type='select' required onChange={onChange} name='stock' value={food.stock}>
-            <option >Select stock status</option>
-            <option value="Aavailable">Available</option>
-            <option value="Unavailable">Unavailable</option>
-          </select>
-          <select className='form-control' type='select' required onChange={onChange} name='category' value={food.category} >
-            <option >Select Category</option>
-            <option vlaue='Rice' >Rice</option>
-            <option vlaue='Burger'>Burger</option>
-            <option vlaue='Curry'>Curry</option>
-            <option vlaue='Set Menu'>Set Menu</option>
-            <option vlaue='Combo Meal'>Combo Meal</option>
-          </select>
-          <input className='form-control' type='text' name="image" placeholder='Image Link' value={food.image} onChange={onChange} required />
-          <button className='btn shadow' onClick={upload} >ADD</button>
-
-        </div>
-      </div> */}
-
     </div>
   )
 }
