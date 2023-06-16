@@ -51,7 +51,7 @@ export default function Menu() {
             <div class="product-card shadow">
           <div className='ggs'>
             <div class="product-card-img shadow">
-              <img src={food.image} alt="" />
+              <img src={food.image} alt="food image" />
             </div>
             <div>
               <h2>{food.foodname}</h2>
