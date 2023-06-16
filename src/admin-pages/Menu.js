@@ -12,44 +12,32 @@ export default function Menu() {
         category: "",
         image: ""
     })
-    // const [foodItem, setFoodItem] = useState([])
+    const [foodItem, setFoodItem] = useState([])
 
-    // const load = async () => {
-    //     axios.get('https://foodie-palace.onrender.com/food-data').then(response => {
-    //         setFoodItem(response.data[0])
-    //         // console.log(response.data[0])
-    //     })
-    // }
-    // useEffect(() => {
-    //     load()
-    // }, [])
+    const load = async () => {
+        axios.get('https://foodie-palace.onrender.com/food-data').then(response => {
+            setFoodItem(response.data[0])
+            // console.log(response.data[0])
+        })
+    }
+    useEffect(() => {
+        load()
+    }, [])
 
     const upload = () => {
         const { foodname, price, stock, category, image } = food
-
+    
         if (foodname && price && stock && category && image) {
             console.log(food)
-            fetch('https://foodie-palace.onrender.com/new-food', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    data: food,
-                }),
+            axios.post('https://foodie-palace.onrender.com/new-food',food).then(res=>{
+                if (res.data === 'added') {
+                    alert('Successfully Added')
+                    window.location.reload(false);
+                }
+                else {
+                    alert('failed')
+                }
             })
-                .then((res) => res.json())
-                .then((data) => {
-
-
-                    if (data.data === 'added') {
-                        alert('Successfully Added')
-                        window.location.reload(false);
-                    }
-                    else {
-                        alert('failed')
-                    }
-                })
         }
     }
 
@@ -84,21 +72,6 @@ export default function Menu() {
 
                     </div>
                 </div>
-                {/* <div className='list shadow'>
-                    {
-                        foodItem !== [] ? foodItem.map((data) => {
-                            return (
-                                <div className='single-item shadow'>
-                                    <h3>{data.foodname}</h3> 
-                                    <Link to={`/edit/${data._id}`}><a className='fa fa-edit'></a></Link>
-                                </div>
-
-                            )
-
-                        }) : ""
-                    }
-
-                </div> */}
             </div>
         </div>
     )

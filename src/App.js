@@ -23,7 +23,7 @@ function App() {
           <Route exact path='/signup' element={<SignUp/>}> </Route>
           <Route exact path='/admin' element={<Admin/>}> </Route>
           <Route exact path='/admin-home' element={<AdminHome/>}> </Route>
-          {/* <Route exact path='/add-food' element={<AddFood/>}> </Route> */}
+          <Route exact path='/food-add' element={<Menu/>}> </Route>
           <Route exact path='/edit/:pid' element={<Edit/>}> </Route>
         </Routes>
       </div>

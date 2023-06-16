@@ -7,29 +7,7 @@ import Menu from '../admin-pages/Menu'
 
 export default function Navbar() {
   let navigate = useNavigate()
-  // const verify = () => {
-  //   fetch('http://localhost:5000/token', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       token: localStorage.getItem("AdminAuthToken"),
-  //     }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-
-
-  //       if (data.data === 'exp') {
-
-  //         localStorage.removeItem("AdminAuthToken")
-  //         localStorage.removeItem("AdminUsername")
-  //         navigate('/admin')
-  //       }
-  //     })
-  // }
-  // verify()
+  
   const logout = () => {
 
     localStorage.removeItem("AdminAuthToken")
@@ -47,11 +25,11 @@ export default function Navbar() {
   return (
     <div>
       <div className="navbar shadow">
-                  <Link to="#" className="logo">Foodie Palace</Link>
+                  <Link to='/admin-home' className="logo">Foodie Palace</Link>
         <div className="nav-links">
           <ul>
             <li className="active"><Link >Home</Link></li>
-            {/* <li><Link to='/add-food' >Add Food</Link></li> */}
+            <li><Link to='/food-add' >Add Food</Link></li>
             <li><Link >Staff list</Link></li>
             {/* <li><Link >Food List</Link></li> */}
             <li><Link to={'/'}><i className='fa fa-home'></i></Link></li>

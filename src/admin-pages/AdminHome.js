@@ -1,4 +1,4 @@
-import './AdminHome.css'
+import './Menu.css'
 import Navbar from '../admin-components/AdminNav'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -24,34 +24,22 @@ useEffect(() => {
     load()
 }, [])
 
-const upload = () => {
-    const { foodname, price, stock, category, image } = food
+// const upload = () => {
+//     const { foodname, price, stock, category, image } = food
 
-    if (foodname && price && stock && category && image) {
-        console.log(food)
-        fetch('https://foodie-palace.onrender.com/new-food', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                data: food,
-            }),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-
-
-                if (data.data === 'added') {
-                    alert('Successfully Added')
-                    window.location.reload(false);
-                }
-                else {
-                    alert('failed')
-                }
-            })
-    }
-}
+//     if (foodname && price && stock && category && image) {
+//         console.log(food)
+//         axios.post('https://foodie-palace.onrender.com/new-food',food).then(res=>{
+//             if (res.data === 'added') {
+//                 alert('Successfully Added')
+//                 window.location.reload(false);
+//             }
+//             else {
+//                 alert('failed')
+//             }
+//         })
+//     }
+// }
 
 const onChange = (event) => {
     setFood({ ...food, [event.target.name]: event.target.value })
@@ -65,7 +53,7 @@ const onChange = (event) => {
         </div>
         <div className='full-menu'>
 
-                <div className='menusec'>
+                {/* <div className='menusec'>
                     <div className='menu shadow'>
                         <h1>Add new Food</h1>
                         <input className='form-control' type='name' name="foodname" placeholder='Food Name' value={food.foodname} onChange={onChange} required />
@@ -87,7 +75,7 @@ const onChange = (event) => {
                         <button className='btn shadow' onClick={upload} >ADD</button>
 
                     </div>
-                </div>
+                </div> */}
                 <div className='list shadow'>
                     {
                         foodItem !== [] ? foodItem.map((data) => {

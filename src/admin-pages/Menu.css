@@ -26,14 +26,14 @@
     row-gap: 2em;
     column-gap: 2em;
 }
-/* .list
+.list
 {
     height: auto;
-    width: 60%;
+    width: 100%;
     padding: 1em;
     overflow-y: auto;
     overflow: hidden;
-} */
+}
 .single-item{
     display: flex;
     justify-content: space-between;

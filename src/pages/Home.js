@@ -61,6 +61,7 @@ export default function Home() {
               return (
                 <div>
                   <h2 id={data.category} key={data._id}> {data.category} </h2>
+                  <br />
                   <div className='items'>
                     {
                       foodItem !== [] ? foodItem.filter((item) => (item.category === data.category) && (item.foodname.toLowerCase().includes(search.toLocaleLowerCase()))).map(filterItems => {
@@ -72,6 +73,7 @@ export default function Home() {
                       }) : ""
                     }
                   </div>
+                  <br />
 
 
                 </div>
