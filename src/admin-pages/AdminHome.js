@@ -65,7 +65,7 @@ const onChange = (event) => {
         </div>
         <div className='full-menu'>
 
-                {/* <div className='menusec'>
+                <div className='menusec'>
                     <div className='menu shadow'>
                         <h1>Add new Food</h1>
                         <input className='form-control' type='name' name="foodname" placeholder='Food Name' value={food.foodname} onChange={onChange} required />
@@ -87,7 +87,7 @@ const onChange = (event) => {
                         <button className='btn shadow' onClick={upload} >ADD</button>
 
                     </div>
-                </div> */}
+                </div>
                 <div className='list shadow'>
                     {
                         foodItem !== [] ? foodItem.map((data) => {
