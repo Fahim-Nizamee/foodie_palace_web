@@ -51,7 +51,7 @@ export default function Navbar() {
         <div className="nav-links">
           <ul>
             <li className="active"><Link >Home</Link></li>
-            {/* <li><Link to='/menu' >Menu</Link></li> */}
+            <li><Link to='/add-food' >Add Food</Link></li>
             <li><Link >Staff list</Link></li>
             {/* <li><Link >Food List</Link></li> */}
             <li><Link to={'/'}><i className='fa fa-home'></i></Link></li>

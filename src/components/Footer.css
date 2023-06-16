@@ -63,8 +63,11 @@
         width: 100%; 
 
     }
+    .d1 p{
+        text-align: justify;
+    }
     .d2{
-
-        width: 100%; 
+        text-align: center;
+        width: 100%;    
     }
 }

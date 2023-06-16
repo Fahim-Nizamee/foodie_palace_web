@@ -12,17 +12,17 @@ export default function Menu() {
         category: "",
         image: ""
     })
-    const [foodItem, setFoodItem] = useState([])
+    // const [foodItem, setFoodItem] = useState([])
 
-    const load = async () => {
-        axios.get('https://foodie-palace.onrender.com/food-data').then(response => {
-            setFoodItem(response.data[0])
-            // console.log(response.data[0])
-        })
-    }
-    useEffect(() => {
-        load()
-    }, [])
+    // const load = async () => {
+    //     axios.get('https://foodie-palace.onrender.com/food-data').then(response => {
+    //         setFoodItem(response.data[0])
+    //         // console.log(response.data[0])
+    //     })
+    // }
+    // useEffect(() => {
+    //     load()
+    // }, [])
 
     const upload = () => {
         const { foodname, price, stock, category, image } = food
@@ -84,7 +84,7 @@ export default function Menu() {
 
                     </div>
                 </div>
-                <div className='list shadow'>
+                {/* <div className='list shadow'>
                     {
                         foodItem !== [] ? foodItem.map((data) => {
                             return (
@@ -98,7 +98,7 @@ export default function Menu() {
                         }) : ""
                     }
 
-                </div>
+                </div> */}
             </div>
         </div>
     )

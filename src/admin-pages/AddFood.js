@@ -1,71 +1,67 @@
-import './AdminHome.css'
+import './AddFood.css'
 import Navbar from '../admin-components/AdminNav'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-export default function AdminHome() {
-  const [food, setFood] = useState({
-    foodname: "",
-    price: "",
-    stock: "",
-    category: "",
-    image: ""
-})
-const [foodItem, setFoodItem] = useState([])
-
-const load = async () => {
-    axios.get('https://foodie-palace.onrender.com/food-data').then(response => {
-        setFoodItem(response.data[0])
-        // console.log(response.data[0])
+export default function AddFood() {
+    const [food, setFood] = useState({
+        foodname: "",
+        price: "",
+        stock: "",
+        category: "",
+        image: ""
     })
-}
-useEffect(() => {
-    load()
-}, [])
+    // const [foodItem, setFoodItem] = useState([])
 
-const upload = () => {
-    const { foodname, price, stock, category, image } = food
+    // const load = async () => {
+    //     axios.get('https://foodie-palace.onrender.com/food-data').then(response => {
+    //         setFoodItem(response.data[0])
+    //         // console.log(response.data[0])
+    //     })
+    // }
+    // useEffect(() => {
+    //     load()
+    // }, [])
 
-    if (foodname && price && stock && category && image) {
-        console.log(food)
-        fetch('https://foodie-palace.onrender.com/new-food', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                data: food,
-            }),
-        })
-            .then((res) => res.json())
-            .then((data) => {
+    const upload = () => {
+        const { foodname, price, stock, category, image } = food
 
-
-                if (data.data === 'added') {
-                    alert('Successfully Added')
-                    window.location.reload(false);
-                }
-                else {
-                    alert('failed')
-                }
+        if (foodname && price && stock && category && image) {
+            console.log(food)
+            fetch('https://foodie-palace.onrender.com/new-food', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    data: food,
+                }),
             })
+                .then((res) => res.json())
+                .then((data) => {
+
+
+                    if (data.data === 'added') {
+                        alert('Successfully Added')
+                        window.location.reload(false);
+                    }
+                    else {
+                        alert('failed')
+                    }
+                })
+        }
     }
-}
 
-const onChange = (event) => {
-    setFood({ ...food, [event.target.name]: event.target.value })
-}
-  return (
-    <div>
-        <Navbar/>
-        <div className='promHome'>
-          <h1><i className="fa-solid fa-utensils"></i> Foodie Palace</h1>
-          <p>Admin Dashboard</p>
-        </div>
-        <div className='full-menu'>
+    const onChange = (event) => {
+        setFood({ ...food, [event.target.name]: event.target.value })
+    }
+    return (
+        <div>
+            <Navbar />
+            <div className='full-menu'>
 
-                {/* <div className='menusec'>
+                <div className='menusec'>
                     <div className='menu shadow'>
                         <h1>Add new Food</h1>
                         <input className='form-control' type='name' name="foodname" placeholder='Food Name' value={food.foodname} onChange={onChange} required />
@@ -87,8 +83,8 @@ const onChange = (event) => {
                         <button className='btn shadow' onClick={upload} >ADD</button>
 
                     </div>
-                </div> */}
-                <div className='list shadow'>
+                </div>
+                {/* <div className='list shadow'>
                     {
                         foodItem !== [] ? foodItem.map((data) => {
                             return (
@@ -102,8 +98,8 @@ const onChange = (event) => {
                         }) : ""
                     }
 
-                </div>
+                </div> */}
             </div>
-    </div>
-  )
+        </div>
+    )
 }
