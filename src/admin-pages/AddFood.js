@@ -60,6 +60,26 @@ export default function AddFood() {
         <div>
             <Navbar />
             <div className='full-menu'>
+            <div class="product-card shadow">
+                    <div className='ggs'>
+                        <div class="product-card-img shadow">
+                            <img src={food.image} alt="" />
+                        </div>
+                        <div>
+                            <h2>{food.foodname.length > 18 ? food.foodname.substring(0, 16) :food.foodname}</h2>
+                            <p><strong>Price :</strong> $ {food.price} </p>
+                        </div>
+                       
+                    </div>
+                    <br />
+                    <div class="product-card-buttons">
+
+                        <button class=" btn btn-outline-primary shadow btns" id="add" href="#!" value="${ID}"
+                            onclick="add(this)">Add</button>
+                        <button class=" btn btn-outline-warning shadow btns" id="remove" href="#!" value="${ID}"
+                            onclick="remove(this)">Remove</button>
+                    </div>
+                </div>
 
                 <div className='menusec'>
                     <div className='menu shadow'>
@@ -84,21 +104,7 @@ export default function AddFood() {
 
                     </div>
                 </div>
-                {/* <div className='list shadow'>
-                    {
-                        foodItem !== [] ? foodItem.map((data) => {
-                            return (
-                                <div className='single-item shadow'>
-                                    <h3>{data.foodname}</h3> 
-                                    <Link to={`/edit/${data._id}`}><a className='fa fa-edit'></a></Link>
-                                </div>
-
-                            )
-
-                        }) : ""
-                    }
-
-                </div> */}
+                
             </div>
         </div>
     )
