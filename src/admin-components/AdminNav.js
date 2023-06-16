@@ -12,6 +12,7 @@ export default function Navbar() {
 
     localStorage.removeItem("AdminAuthToken")
     localStorage.removeItem("AdminUsername")
+    localStorage.removeItem("AdminStatus")
     navigate('/admin')
   }
 
@@ -30,9 +31,9 @@ export default function Navbar() {
           <ul>
             <li className="active"><Link >Home</Link></li>
             <li><Link to='/food-add' >Add Food</Link></li>
-            <li><Link >Staff list</Link></li>
+            <li><Link to='/admin-list'>Staff list</Link></li>
             {/* <li><Link >Food List</Link></li> */}
-            <li><Link to={'/'}><i className='fa fa-home'></i></Link></li>
+            <li><Link to={'/admin-home'}><i className='fa fa-home'></i></Link></li>
             <li><div className="dropdown">
                   <a className='user' href='#'><i className='fa-solid fa-user'></i> <span>{username}</span></a>
                   <div className="dropdown-content shadow">

@@ -14,6 +14,7 @@ export default function Login() {
         if (response.data.message === 'success') {
           localStorage.setItem("AdminAuthToken",response.data.authToken)
           localStorage.setItem("AdminUsername",response.data.username)
+          localStorage.setItem("AdminStatus",response.data.adminStatus)
           console.log(localStorage.getItem("AdminAuthToken"))
           
           

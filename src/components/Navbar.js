@@ -49,8 +49,7 @@ export default function Navbar() {
         <Link to="#" className="logo">Foodie Palace</Link>
         <div className="nav-links">
           <ul>
-            <li className="active"><Link >Home</Link></li>
-            <li><Link >Menu</Link></li>
+            <li className="active" ><Link to='/' ><i className='fa fa-home'></i></Link></li>
             <li><Link >About</Link></li>
             <li><Link >Contact</Link></li>
             {

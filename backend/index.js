@@ -48,89 +48,6 @@ const userSchema = new mongoose.Schema({
 
 const User = new mongoose.model("users", userSchema)
 
-const adminSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        required: true
-    },
-    address: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    status: {
-        type: String,
-        required: true
-    },
-    date: {
-        type: Date,
-        default: Date.now
-    },
-})
-
-
-const Admin = new mongoose.model("admins", adminSchema)
-
-//admin login=================================
-app.post('/admin-login', async (req, res) => {
-    console.log(req.body)
-    const { email, pass } = req.body
-    Admin.findOne({ email: email }, async (err, user) => {
-        if (user) {
-            const password = await bcrypt.compare(req.body.password, user.password)
-            if (password) {
-
-                const data = {
-                    usert: {
-                        id: user.id
-                    }
-                }
-                const authToken = jwt.sign(data, jwtSecret, {
-                    expiresIn: '10m'
-                })
-                // res.json({})
-                res.send({ message: 'success', authToken: authToken, username: user.username })
-            }
-            else {
-                res.send('wrong pass')
-            }
-        }
-        else {
-            res.send('wrong mail')
-        }
-    })
-})
-
-//Admin signUp======================================
-app.post('/admin-signup', async (req, res) => {
-    console.log(req.body)
-    const { username, address, email, pass, status } = req.body
-    Admin.findOne({ email: email }, async (err, user) => {
-        if (user) {
-            res.send({ message: 'User already registered' })
-        }
-        else {
-            const salt = await bcrypt.genSalt(10)
-            let password = await bcrypt.hash(req.body.password, salt)
-            await Admin.create({
-                username,
-                address,
-                email,
-                password,
-                status
-
-            })
-            res.send('Successfully registered')
-        }
-    })
-})
 
 
 app.get('/', (req, res) => {
@@ -240,44 +157,7 @@ app.get('/food-data', async (req, res) => {
 })
 
 
-app.get('/food/:id([0-9a-fA-F]{24})', async (req, res) => {
-    const id = req.params.id.trim()
-    const query = { _id: new ObjectId(id) }
-    const data = await mongoose.connection.db.collection("foods").findOne(query)
-    console.log(data)
-    res.send(data)
-})
 
-app.put('/update-food/:id([0-9a-fA-F]{24})', async (req, res) => {
-    const id = req.params.id.trim()
-    console.log('updating', id)
-    const updatedFood = req.body
-    const filter = { _id: new ObjectId(id) }
-    const options = { upsert: true }
-    const updateDoc = {
-        $set: {
-            foodname: updatedFood.foodname,
-            price: updatedFood.price,
-            stock: updatedFood.stock,
-            category: updatedFood.category,
-            image: updatedFood.image,
-        },
-    }
-    const result = await mongoose.connection.db.collection("foods").updateOne(
-        filter,
-        updateDoc,
-        options,
-    )
-    console.log('updating', id)
-    res.send('success')
-})
-
-app.delete('/delete-food/:id([0-9a-fA-F]{24})', async (req, res) => {
-    const id = req.params.id.trim()
-    const query = { _id: new ObjectId(id) }
-    const result = await mongoose.connection.db.collection("foods").deleteOne(query)
-    res.send('success')
-})
 
 
 
@@ -287,6 +167,90 @@ app.delete('/delete-food/:id([0-9a-fA-F]{24})', async (req, res) => {
 //=======================================//
 //=================ADMIN=================//
 //=======================================//
+const adminSchema = new mongoose.Schema({
+    username: {
+        type: String,
+        required: true
+    },
+    address: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    status: {
+        type: String,
+        required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    },
+})
+
+
+const Admin = new mongoose.model("admins", adminSchema)
+
+//admin login=================================
+app.post('/admin-login', async (req, res) => {
+    console.log(req.body)
+    const { email, pass } = req.body
+    Admin.findOne({ email: email }, async (err, user) => {
+        if (user) {
+            const password = await bcrypt.compare(req.body.password, user.password)
+            if (password) {
+
+                const data = {
+                    usert: {
+                        id: user.id
+                    }
+                }
+                const authToken = jwt.sign(data, jwtSecret, {
+                    expiresIn: '10m'
+                })
+                // res.json({})
+                res.send({ message: 'success', authToken: authToken, username: user.username,adminStatus:user.status })
+                
+            }
+            else {
+                res.send('wrong pass')
+            }
+        }
+        else {
+            res.send('wrong mail')
+        }
+    })
+})
+
+//Admin signUp======================================
+app.post('/admin-signup', async (req, res) => {
+    console.log(req.body)
+    const { username, address, email, pass, status } = req.body
+    Admin.findOne({ email: email }, async (err, user) => {
+        if (user) {
+            res.send({ message: 'User already registered' })
+        }
+        else {
+            const salt = await bcrypt.genSalt(10)
+            let password = await bcrypt.hash(req.body.password, salt)
+            await Admin.create({
+                username,
+                address,
+                email,
+                password,
+                status
+
+            })
+            res.send('Successfully registered')
+        }
+    })
+})
 
 
 //food schema================
@@ -336,7 +300,44 @@ app.post('/new-food', async (req, res) => {
 
 
 
+app.get('/food/:id([0-9a-fA-F]{24})', async (req, res) => {
+    const id = req.params.id.trim()
+    const query = { _id: new ObjectId(id) }
+    const data = await mongoose.connection.db.collection("foods").findOne(query)
+    console.log(data)
+    res.send(data)
+})
 
+app.put('/update-food/:id([0-9a-fA-F]{24})', async (req, res) => {
+    const id = req.params.id.trim()
+    console.log('updating', id)
+    const updatedFood = req.body
+    const filter = { _id: new ObjectId(id) }
+    const options = { upsert: true }
+    const updateDoc = {
+        $set: {
+            foodname: updatedFood.foodname,
+            price: updatedFood.price,
+            stock: updatedFood.stock,
+            category: updatedFood.category,
+            image: updatedFood.image,
+        },
+    }
+    const result = await mongoose.connection.db.collection("foods").updateOne(
+        filter,
+        updateDoc,
+        options,
+    )
+    console.log('updating', id)
+    res.send('success')
+})
+
+app.delete('/delete-food/:id([0-9a-fA-F]{24})', async (req, res) => {
+    const id = req.params.id.trim()
+    const query = { _id: new ObjectId(id) }
+    const result = await mongoose.connection.db.collection("foods").deleteOne(query)
+    res.send('success')
+})
 
 
 
