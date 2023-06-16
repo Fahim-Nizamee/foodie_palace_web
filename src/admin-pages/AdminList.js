@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AdminNav from '../admin-components/AdminNav'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function AdminList() {
 
@@ -34,11 +34,22 @@ export default function AdminList() {
   const onChange = (event) => {
     setUser({ ...user, [event.target.name]: event.target.value })
   }
+const [adminList, setAdminList] = useState([])
+
+const load = async () => {
+    axios.get('http://localhost:5000/admin-data').then(response => {
+        setAdminList(response.data)
+        // console.log(response.data[0])
+    })
+}
+useEffect(() => {
+    load()
+}, [])
   return (
     <div>
       <AdminNav/>
       <div className='full-menu'>
-        <div className='signup shadow'>
+        <div className='admin-signup shadow'>
             <h1>Add Admin</h1>
             <input className='form-control i2' type='text' name="username" placeholder='Username' value={user.username} onChange={onChange} />
             <input className='form-control' type='text' name="address" placeholder='Address' value={user.address} onChange={onChange} />
@@ -51,6 +62,23 @@ export default function AdminList() {
             <input className='form-control' type='password' name="password" placeholder='Password' value={user.password} onChange={onChange} />
             <button className='btn shadow' onClick={register}>Continue</button>
           </div>
+          <div className='list shadow'>
+            <h2 className='text-center'>Admin List</h2>
+                    {
+                        adminList !== [] ? adminList.map((data) => {
+                            return (
+                                <div className='single-item shadow'>
+                                  
+                                    <h3>{data.username}</h3> 
+                                    <Link to={`/edit-admin/${data._id}`}><a className='fa fa-edit'></a></Link>
+                                </div>
+
+                            )
+
+                        }) : ""
+                    }
+
+                </div>
 
       </div>
     </div>

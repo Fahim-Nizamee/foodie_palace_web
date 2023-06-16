@@ -215,8 +215,8 @@ app.post('/admin-login', async (req, res) => {
                     expiresIn: '10m'
                 })
                 // res.json({})
-                res.send({ message: 'success', authToken: authToken, username: user.username,adminStatus:user.status })
-                
+                res.send({ message: 'success', authToken: authToken, username: user.username, adminStatus: user.status })
+
             }
             else {
                 res.send('wrong pass')
@@ -299,7 +299,7 @@ app.post('/new-food', async (req, res) => {
 
 
 
-
+//Get foods
 app.get('/food/:id([0-9a-fA-F]{24})', async (req, res) => {
     const id = req.params.id.trim()
     const query = { _id: new ObjectId(id) }
@@ -308,6 +308,7 @@ app.get('/food/:id([0-9a-fA-F]{24})', async (req, res) => {
     res.send(data)
 })
 
+//update Foods
 app.put('/update-food/:id([0-9a-fA-F]{24})', async (req, res) => {
     const id = req.params.id.trim()
     console.log('updating', id)
@@ -332,6 +333,7 @@ app.put('/update-food/:id([0-9a-fA-F]{24})', async (req, res) => {
     res.send('success')
 })
 
+//delete Foods
 app.delete('/delete-food/:id([0-9a-fA-F]{24})', async (req, res) => {
     const id = req.params.id.trim()
     const query = { _id: new ObjectId(id) }
@@ -340,8 +342,24 @@ app.delete('/delete-food/:id([0-9a-fA-F]{24})', async (req, res) => {
 })
 
 
+//get Admin data
+app.get('/admin-data', async (req, res) => {
+    const fetched_data = await mongoose.connection.db.collection("admins")
+
+    fetched_data.find({}).toArray(function (err, data) {
+
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.send(data)
+        }
 
 
+    })
+
+
+})
 
 
 

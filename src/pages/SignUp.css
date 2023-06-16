@@ -34,6 +34,19 @@
     border: rgb(230, 230, 230) solid 1px;
     border-radius: 20px;
 }
+.admin-signup{
+    width: 40%;
+    padding: 2em;
+    /* width: 600px; */
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+    border: rgb(230, 230, 230) solid 1px;
+    border-radius: 20px;
+}
 .signup h1{
     color: rgb(227, 92, 19);
     font-size: 50px;
@@ -89,10 +102,18 @@ button{
         margin: 5px;
         
     }
+    .admin-signup{
+        padding: 2em;
+        margin: 5px;
+        
+    }
 }
 @media screen and (max-width:800px)
 {
     .signup{
     width: 80%;
     }
+    .admin-signup{
+        width: 80%;
+        }
 }
