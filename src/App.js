@@ -11,6 +11,8 @@ import SignUp from './pages/SignUp';
 import Admin from './admin-pages/Admin';
 import AdminHome from './admin-pages/AdminHome'
 import Menu from './admin-pages/Menu';
+import Edit from './admin-pages/Edit';
+import AddFood from './admin-pages/AddFood';
 
 function App() {
   return (
@@ -22,7 +24,8 @@ function App() {
           <Route exact path='/signup' element={<SignUp/>}> </Route>
           <Route exact path='/admin' element={<Admin/>}> </Route>
           <Route exact path='/admin-home' element={<AdminHome/>}> </Route>
-          <Route exact path='/menu' element={<Menu/>}> </Route>
+          <Route exact path='/add-food' element={<AddFood/>}> </Route>
+          <Route exact path='/edit/:pid' element={<Edit/>}> </Route>
         </Routes>
       </div>
     </Router>

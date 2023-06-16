@@ -8,7 +8,7 @@ export default function Footer() {
         <div className='d1 '>
           <p><h2>Foodie Palace- </h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque sequi adipisci aperiam, tempore iste voluptates distinctio natus, similique odit unde error iure, voluptatem dolorum voluptatum dicta quos aliquam repellat amet!</p>
         </div>
-        <div className='d2 text-center'>
+        <div className='d2'>
 
             <a href="#!"><i className="fa fa-facebook" style={{ fontSize: '25px' }}></i> facebook.com/foodie-palace</a>
           <br />

@@ -13,7 +13,7 @@ export default function SignUp() {
   const register = () => {
     const { username, address, email, password } = user
     if (username && address && email && password) {
-      axios.post('https://backend.wikivast.com/signup', user).then(response => {
+      axios.post('https://foodie-palace.onrender.com/signup', user).then(response => {
         if (response.data === 'Successfully registered') {
           alert('Successfully registered')
           navigate('/login')
