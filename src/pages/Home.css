@@ -79,6 +79,37 @@
     row-gap: 1em;
     transition: all .5s ease-in-out;
 }
+.cart{
+    height: 40px;
+    width: 40px;
+    background-color: white;
+    /* border: 1px solid rgb(227, 92, 19); */
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    top: 10px;
+    right:100px;
+    transition: all .5s ease-in-out;
+}
+.fa-cart-shopping{
+    font-size: 20px;
+}
+.counter{
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    display: block;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    border: #ffffff solid 0.5px;
+    background-color: rgb(227, 92, 19);
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+}
 @media screen and (max-width:1510px) {
     .items {
         grid-template-columns: repeat(3,1fr);
@@ -102,10 +133,22 @@
     .promHome{
         font-size: 100%;
     }
+    .cart{
+        top: 10px;
+        right:460px;
+        transition: all .5s ease-in-out;
+    }
 }
 @media screen and (max-width:1120px) {
     .items {
         grid-template-columns: repeat(3,1fr);
+        transition: all .5s ease-in-out;
+    }
+}
+@media screen and (max-width:999px) {
+    .cart{
+        top: 10px;
+        right:100px;
         transition: all .5s ease-in-out;
     }
 }
@@ -119,7 +162,11 @@
 }
 
 @media screen and (max-width:500px) {
-
+    .cart{
+        right: 80px;
+        transition: all .5s ease-in-out;
+        
+    }
     .search{
         margin-left: 5%;
         margin-right: 5%;
@@ -134,4 +181,60 @@
         transition: all .5s ease-in-out;
         /* width: 30%; */
     }
+}
+.slider {
+    /* padding-left: 2%; */
+    padding-right: 2%;
+    border: #ffffff;
+}
+
+.slider-container {
+    overflow: hidden;
+    position: relative;
+    z-index: -1000;
+    border: solid rgb(255, 255, 255) 1px;
+    border-radius: 30px;
+}
+
+.slider-images {
+    display: flex;
+    animation: slide 10s infinite;
+
+}
+
+.slider-images img {
+
+    width: 100%;
+
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+
+    15% {
+        transform: translateX(0);
+    }
+
+    30% {
+        transform: translateX(-100%);
+    }
+
+    45% {
+        transform: translateX(-100%);
+    }
+
+    60% {
+        transform: translateX(-200%);
+    }
+
+    75% {
+        transform: translateX(-200%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+
 }

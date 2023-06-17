@@ -65,10 +65,8 @@ export default function Menu() {
           <br />
           <div class="product-card-buttons">
 
-            <button class=" btn btn-outline-primary shadow btns" id="add" href="#!" value="${ID}"
-              onclick="add(this)">Add</button>
-            <button class=" btn btn-outline-warning shadow btns" id="remove" href="#!" value="${ID}"
-              onclick="remove(this)">Remove</button>
+          <button class=" btn btn-outline-dark shadow btns" id="add"
+            >Add to Cart</button>
           </div>
         </div>
                 <div className='menusec'>

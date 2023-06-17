@@ -131,10 +131,8 @@ export default function Edit(props) {
           <br />
           <div class="product-card-buttons">
 
-            <button class=" btn btn-outline-primary shadow btns" id="add" href="#!" value="${ID}"
-              onclick="add(this)">Add</button>
-            <button class=" btn btn-outline-warning shadow btns" id="remove" href="#!" value="${ID}"
-              onclick="remove(this)">Remove</button>
+            <button class=" btn btn-outline-dark shadow btns" id="add"
+            >Add to Cart</button>
           </div>
         </div>
         <div className='menuSec'>
@@ -148,12 +146,12 @@ export default function Edit(props) {
               <option value="Unavailable">Unavailable</option>
             </select>
             <select className='form-control' type='select' required name='category' value={food.category} onChange={submitCategory} >
-            <option >Select Category</option>
-                            <option vlaue='Rice' >Rice</option>
-                            <option vlaue='Burger'>Burger</option>
-                            <option vlaue='Pizza'>Pizza</option>
-                            <option vlaue='Appetizer'>Appetizer</option>
-                            <option vlaue='Combo Meal'>Combo Meal</option>
+              <option >Select Category</option>
+              <option vlaue='Rice' >Rice</option>
+              <option vlaue='Burger'>Burger</option>
+              <option vlaue='Pizza'>Pizza</option>
+              <option vlaue='Appetizer'>Appetizer</option>
+              <option vlaue='Combo Meal'>Combo Meal</option>
             </select>
             <input className='form-control' type='text' name="image" placeholder='Image Link' value={food.image} required onChange={submitImage} />
             <div className='button'>

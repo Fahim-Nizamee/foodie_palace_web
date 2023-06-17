@@ -1,0 +1,37 @@
+.carts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.list2
+{
+    height: 60vh;
+    width: 80vw;
+    padding: 1em;
+    margin: 1em;
+    overflow-y: scroll;
+    /* overflow: hidden; */
+}
+.dds1{
+    width: 60%;
+    text-align: center;
+}
+.dds2{
+    width: 20%;
+    text-align: center;
+}
+.single-item2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3em;
+    padding-left:1em;
+    padding-right:1em;
+    border:0.5px solid rgb(239, 239, 239);
+    /* border-radius: 5%; */
+    margin-bottom: 0.5em;
+}
+.single-item2:hover{
+    background-color: rgb(242, 242, 242);
+}

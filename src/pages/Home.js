@@ -4,10 +4,25 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Card from '../components/Card'
 import axios from 'axios'
+import { useCart } from '../components/ContextReducer'
+import Modal from '../Modal'
+import Cart from './Cart'
+import img1 from '../img/img1.jpg'
+import img2 from '../img/img2.jpg'
+import img3 from '../img/img3.jpg'
 export default function Home() {
+  const [cartView,setCartView] = useState(false)
+  let data=useCart()
   const [foodCat, setFoodCat] = useState([])
   const [foodItem, setFoodItem] = useState([])
   const [search, setSearch] = useState('')
+  let display = ""
+  if(data.length!==0)
+  {
+    display = 'flex'
+
+  }
+  
 
   const load = async () => {
     axios.get('https://foodie-palace.onrender.com/food-data').then(response => {
@@ -53,7 +68,15 @@ export default function Home() {
         </div>
         <div className='popular' id='pop'>
           <h2><i class="fa-solid fa-fire-flame-curved"></i> Popular</h2>
-
+          <div class="slider">
+            <div class="slider-container shadow">
+              <div class="slider-images">
+                <img src={img1} />
+                <img src={img2} />
+                <img src={img3} />
+              </div>
+            </div>
+            </div>
         </div>
         <div className='popular'>
           {
@@ -67,7 +90,7 @@ export default function Home() {
                       foodItem !== [] ? foodItem.filter((item) => (item.category === data.category) && (item.foodname.toLowerCase().includes(search.toLocaleLowerCase()))).map(filterItems => {
                         return (
                           <div key={filterItems._id}>
-                            <Card foodname={filterItems.foodname} image={filterItems.image} price={filterItems.price} stock={filterItems.stock} food_id={filterItems._id} ></Card>
+                            <Card  foodItem={filterItems} ></Card>
                           </div>
                         )
                       }) : ""
@@ -82,7 +105,11 @@ export default function Home() {
           }
 
         </div>
-
+        <div className='cart' onClick={()=>{setCartView(true)}} style={{display:display}}>
+          <span className='counter'>{data.length}</span>
+          <i className='fa fa-cart-shopping fa-beat'></i>
+        </div>
+          {cartView?<Modal onClose={()=>setCartView(false)} ><Cart/></Modal>:null}
         <br />
         <div><Footer /></div>
       </div>
