@@ -76,8 +76,7 @@
 .items{
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    
-    column-gap: 1em;
+    row-gap: 1em;
     transition: all .5s ease-in-out;
 }
 @media screen and (max-width:1510px) {
