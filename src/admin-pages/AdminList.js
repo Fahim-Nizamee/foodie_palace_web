@@ -37,7 +37,7 @@ export default function AdminList() {
 const [adminList, setAdminList] = useState([])
 
 const load = async () => {
-    axios.get('http://localhost:5000/admin-data').then(response => {
+    axios.get('https://foodie-palace.onrender.com/admin-data').then(response => {
         setAdminList(response.data)
         // console.log(response.data[0])
     })

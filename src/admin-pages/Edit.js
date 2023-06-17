@@ -148,12 +148,12 @@ export default function Edit(props) {
               <option value="Unavailable">Unavailable</option>
             </select>
             <select className='form-control' type='select' required name='category' value={food.category} onChange={submitCategory} >
-              <option >Select Category</option>
-              <option vlaue='Rice' >Rice</option>
-              <option vlaue='Burger'>Burger</option>
-              <option vlaue='Curry'>Curry</option>
-              <option vlaue='Set Menu'>Set Menu</option>
-              <option vlaue='Combo Meal'>Combo Meal</option>
+            <option >Select Category</option>
+                            <option vlaue='Rice' >Rice</option>
+                            <option vlaue='Burger'>Burger</option>
+                            <option vlaue='Pizza'>Pizza</option>
+                            <option vlaue='Appetizer'>Appetizer</option>
+                            <option vlaue='Combo Meal'>Combo Meal</option>
             </select>
             <input className='form-control' type='text' name="image" placeholder='Image Link' value={food.image} required onChange={submitImage} />
             <div className='button'>
