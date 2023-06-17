@@ -9,7 +9,9 @@ const MODAL_STYLES = {
   transform: 'translate(-50%, -50%)',
   zIndex: 1000,
   height: '90%',
-  width: '90%'
+  width: '90%',
+  borderRadius: '10px'
+  
 }
 
 const OVERLAY_STYLES = {
@@ -18,7 +20,8 @@ const OVERLAY_STYLES = {
   left: 0,
   right: 0,
   bottom: 0,
-  backgroundColor: 'rgba(0, 0, 0, .7)',
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  backdropFilter: 'blur(2px)',
   zIndex: 1000
 }
 
