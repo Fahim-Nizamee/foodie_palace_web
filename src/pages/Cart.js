@@ -1,8 +1,10 @@
 import React from 'react'
 import './Cart.css'
 import { useCart, useDispatchCart } from '../components/ContextReducer'
+import { useNavigate } from 'react-router-dom';
 
 export default function Cart() {
+    let navigate = useNavigate()
     let data= useCart();
     let dispatch = useDispatchCart();
     if(data.length===0)
@@ -13,6 +15,20 @@ export default function Cart() {
             </div>
         )
     }
+    const order = ()=>{
+        if(!localStorage.getItem("authToken"))
+        {
+            alert("You are not Logged in. Please Log in First")
+            navigate('/login')
+        }
+        else{
+            return(
+                <div>
+                <div className='warning text-center'>Successfully Ordered</div>
+            </div>
+            )
+        }
+    } 
     let totalPrice = data.reduce((total,foods)=>total + parseInt(foods.price),0)
   return (
     <div className='carts'>
@@ -27,7 +43,7 @@ export default function Cart() {
             ))}
         </div>
         <h2>Total price: ${totalPrice}</h2>
-        <button className='btn btn-outline-dark'>Order Now</button>
+        <button className='btn btn-outline-dark' onClick={order} >Order Now</button>
       
     </div>
   )
