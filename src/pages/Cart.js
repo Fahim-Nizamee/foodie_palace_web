@@ -15,7 +15,7 @@ export default function Cart() {
             </div>
         )
     }
-    const order = ()=>{
+    const order =()=>{
         if(!localStorage.getItem("authToken"))
         {
             alert("You are not Logged in. Please Log in First")
@@ -25,7 +25,7 @@ export default function Cart() {
             return(
                 <div>
                 <div className='warning text-center'>Successfully Ordered</div>
-            </div>
+                </div>
             )
         }
     } 
