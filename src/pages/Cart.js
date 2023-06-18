@@ -39,7 +39,7 @@ export default function Cart() {
             ))}
         </div>
         <h2>Total price: ${totalPrice}</h2>
-        <button className='btn btn-outline-dark' onClick={order} >Order Now</button>
+        <button className='btn btn-outline-dark' onClick={order} >Order Now</button> 
       
     </div>
   )
