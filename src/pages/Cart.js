@@ -35,7 +35,7 @@ export default function Cart() {
                 <div className='single-item2 shadow'>
                 <h3 className='dds1'>{food.foodname}</h3>
                 <p className='dds2'>$ {food.price}</p>
-                <a className='fa fa-trash dds2' onClick={()=>{dispatch({type:"REMOVE",index:index})}}></a>
+                <a className='fa fa-trash dds2'style={{cursor:"pointer"}} onClick={()=>{dispatch({type:"REMOVE",index:index})}}></a>
                 </div>
             ))}
         </div>

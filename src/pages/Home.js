@@ -63,6 +63,7 @@ export default function Home() {
           <h1><i className="fa-solid fa-utensils"></i> Foodie Palace</h1>
           <p>Always here to provide Food</p>
         </div>
+        <br />
         <div className='sr '>
           <input className='search shadow' type="search" placeholder='search' value={search} onChange={(e) => { setSearch(e.target.value) }} />
         </div>
@@ -107,9 +108,9 @@ export default function Home() {
           }
 
         </div>
-        <div className='cart' onClick={()=>{setCartView(true)}} style={{display:display}}>
+        <div className='cart' onClick={()=>{setCartView(true)}} style={{display:display,cursor:"pointer"}}>
           <span className='counter'>{data.length}</span>
-          <i className='fa fa-cart-shopping fa-beat'></i>
+          <i className='fa fa-cart-shopping fa-beat' ></i>
         </div>
           {cartView?<Modal onClose={()=>setCartView(false)} ><Cart/></Modal>:null}
         <br />

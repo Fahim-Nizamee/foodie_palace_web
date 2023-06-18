@@ -58,7 +58,7 @@ export default function Navbar() {
                 <li><div className="dropdown">
                   <a className='user' href='#'><i className='fa-solid fa-user'></i> <span>{username}</span></a>
                   <div className="dropdown-content shadow">
-                    <a onClick={logout}>Logout</a>
+                    <a style={{cursor:"pointer"}} onClick={logout}>Logout</a>
                   </div>
                 </div></li>
                 : <li><Link to={'/login'}>Sign in</Link></li>
