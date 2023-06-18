@@ -2,45 +2,15 @@
     background-color: rgb(22, 22, 22);
     padding-left: 5%;
     padding-right: 5%;
-    padding-top:1% ;
-    padding-bottom:1% ;
+    padding-top:0.5% ;
+    padding-bottom:0.5% ;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    text-align: center;
     transition: all .50s ease-in-out;
     
 }
-.d1{
-    color: white;
-    width: 40%;
 
-}
-.d2{
-    width: 40%;
-
-}
-.fa-facebook {
-    color: #4267B2;
-}
-
-.fa-instagram {
-    color: #d62976;
-}
-
-.fa-twitter {
-    color: #1DA1F2;
-}
-
-.fa-whatsapp {
-    color: #25D366;
-}
-
-.fa-envelope {
-    color: #EA4335;
-}
-.footer a {
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-}
 
 @media screen and (max-width:1304px)
 {

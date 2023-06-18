@@ -26,10 +26,10 @@ export default function Menu() {
 
     const upload = () => {
         const { foodname, price, stock, category, image } = food
-    
+
         if (foodname && price && stock && category && image) {
             console.log(food)
-            axios.post('https://foodie-palace.onrender.com/new-food',food).then(res=>{
+            axios.post('https://foodie-palace.onrender.com/new-food', food).then(res => {
                 if (res.data === 'added') {
                     alert('Successfully Added')
                     window.location.reload(false);
@@ -48,27 +48,24 @@ export default function Menu() {
         <div>
             <Navbar />
             <div className='full-menu'>
-            <div class="product-card shadow">
-          <div className='ggs'>
-            <div class="product-card-img shadow">
-              <img src={food.image} alt="food image" />
-            </div>
-            <div>
-              <h2>{food.foodname}</h2>
-              <p><strong>Price :</strong> $ {food.price} </p>
-            </div>
-            {/* <div>
-            <h2>{props.foodname.length > 18 ? props.foodname.substring(0, 10) : props.foodname}</h2>
-            <p><strong>Price :</strong> $ {props.price} </p>
-          </div> */}
-          </div>
-          <br />
-          <div class="product-card-buttons">
+                <div class="product-card shadow">
+                    <div className='ggs'>
+                        <div class="product-card-img shadow">
+                            <img src={food.image} alt="food image" />
+                        </div>
+                        <div>
+                            <h2>{food.foodname}</h2>
+                            <p><strong>Price :</strong> $ {food.price} </p>
+                        </div>
 
-          <button class=" btn btn-outline-dark shadow btns" id="add"
-            >Add to Cart</button>
-          </div>
-        </div>
+                    </div>
+                    <br />
+                    <div class="product-card-buttons">
+
+                        <button class=" btn btn-outline-dark shadow btns" id="add"
+                        >Add to Cart</button>
+                    </div>
+                </div>
                 <div className='menusec'>
                     <div className='menu shadow'>
                         <h1>Add new Food</h1>

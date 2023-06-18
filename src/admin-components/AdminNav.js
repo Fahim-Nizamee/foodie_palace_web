@@ -32,7 +32,7 @@ export default function Navbar() {
                   <Link to='/admin-home' className="logo">Foodie Palace</Link>
         <div className="nav-links">
           <ul>
-            <li className="active"><Link >Home</Link></li>
+            {/* <li className="active"><Link >Home</Link></li> */}
             <li><Link to='/food-add' >Add Food</Link></li>
             {
               (localStorage.getItem('AdminStatus')==='Owner')?

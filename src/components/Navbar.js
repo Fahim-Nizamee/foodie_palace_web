@@ -50,8 +50,8 @@ export default function Navbar() {
         <div className="nav-links">
           <ul>
             <li className="active" ><Link to='/' ><i className='fa fa-home'></i></Link></li>
-            <li><Link >About</Link></li>
-            <li><Link >Contact</Link></li>
+            <li><Link to='/about-us' >About</Link></li>
+            <li><Link to='/privacy-policy' >Privacy Policy</Link></li>
             {
 
               (localStorage.getItem("authToken")) ?

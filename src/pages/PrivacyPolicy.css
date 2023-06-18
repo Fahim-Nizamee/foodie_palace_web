@@ -1,0 +1,17 @@
+.PrivacyPolicy{
+    margin-left: 5%;
+    margin-right: 20%;
+    text-align: justify;
+}
+
+.PrivacyPolicy p{
+    color: black;
+}
+
+@media screen and (max-width:1200px)
+{
+    .PrivacyPolicy{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+}

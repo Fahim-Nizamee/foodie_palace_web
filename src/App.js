@@ -15,6 +15,8 @@ import Edit from './admin-pages/Edit';
 import AdminList from './admin-pages/AdminList';
 import { CartProvider } from './components/ContextReducer';
 import Cart from './pages/Cart';
+import AboutUs from './pages/AboutUs';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
             <Route exact path='/cart' element={<Cart/>} ></Route>
             <Route exact path='/login' element={<Login />}> </Route>
             <Route exact path='/signup' element={<SignUp />}> </Route>
+            <Route exact path='/about-us' element={<AboutUs />}> </Route>
+            <Route exact path='/privacy-policy' element={<PrivacyPolicy />}> </Route>
             <Route exact path='/admin' element={<Admin />}> </Route>
             <Route exact path='/admin-home' element={<AdminHome />}> </Route>
             <Route exact path='/food-add' element={<Menu />}> </Route>
