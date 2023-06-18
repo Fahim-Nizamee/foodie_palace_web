@@ -15,7 +15,7 @@ export default function Login() {
           localStorage.setItem("AdminAuthToken",response.data.authToken)
           localStorage.setItem("AdminUsername",response.data.username)
           localStorage.setItem("AdminStatus",response.data.adminStatus)
-          localStorage.setItem("AdminStatus",response.data.id)
+          localStorage.setItem("Id",response.data.id)
           console.log(localStorage.getItem("AdminAuthToken"))
           
           
