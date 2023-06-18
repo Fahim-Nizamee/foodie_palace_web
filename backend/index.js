@@ -215,7 +215,7 @@ app.post('/admin-login', async (req, res) => {
                     expiresIn: '10m'
                 })
                 // res.json({})
-                res.send({ message: 'success', authToken: authToken, username: user.username, adminStatus: user.status})
+                res.send({ message: 'success', authToken: authToken, username: user.username, adminStatus: user.status ,id:user._id})
 
             }
             else {
