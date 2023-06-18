@@ -71,12 +71,11 @@ export default function EditAdmin(props) {
 
     // }
     const Delete = () => {
-        const { foodname, price, stock, category, image } = admin
-        if (foodname && price && stock && category && image) {
-            axios.delete(`https://foodie-palace.onrender.com/delete-food/${pid}`).then(response => {
+        if (localStorage.getItem("Id")!==pid) {
+            axios.delete(`https://foodie-palace.onrender.com/delete-admin/${pid}`).then(response => {
                 if (response.data === 'success') {
                     alert("Successfully Deleted")
-                    navigate('/admin-home')
+                    navigate('/admin-list')
                     window.location.reload(false);
                 }
                 else {
@@ -86,7 +85,7 @@ export default function EditAdmin(props) {
 
             })
         } else {
-            alert('Invalid Entry')
+            alert('Its you')
         }
 
     }

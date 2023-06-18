@@ -368,7 +368,12 @@ app.get('/admin-edit/:id([0-9a-fA-F]{24})', async (req, res) => {
     console.log(data)
     res.send(data)
 })
-
+app.delete('/delete-admin/:id([0-9a-fA-F]{24})', async (req, res) => {
+    const id = req.params.id.trim()
+    const query = { _id: new ObjectId(id) }
+    const result = await mongoose.connection.db.collection("admins").deleteOne(query)
+    res.send('success')
+})
 
 
 
