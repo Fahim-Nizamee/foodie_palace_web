@@ -23,6 +23,7 @@ export default function Cart() {
         }
         else{
             alert("Your Food on the way")
+            window.location.reload(false);
         }
     } 
     let totalPrice = data.reduce((total,foods)=>total + parseInt(foods.price),0)
