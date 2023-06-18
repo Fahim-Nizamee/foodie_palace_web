@@ -13,7 +13,7 @@ export default function Cart() {
             </div>
         )
     }
-    let totalPrice = data.reduce((total,foods)=>total + foods.price,0)
+    let totalPrice = data.reduce((total,foods)=>total + parseInt(foods.price),0)
   return (
     <div className='carts'>
         <h2 className='text-center'>Cart</h2>

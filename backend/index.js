@@ -215,7 +215,7 @@ app.post('/admin-login', async (req, res) => {
                     expiresIn: '10m'
                 })
                 // res.json({})
-                res.send({ message: 'success', authToken: authToken, username: user.username, adminStatus: user.status })
+                res.send({ message: 'success', authToken: authToken, username: user.username, adminStatus: user.status ,id:user._id})
 
             }
             else {
@@ -359,6 +359,14 @@ app.get('/admin-data', async (req, res) => {
     })
 
 
+})
+//get Single Admin data
+app.get('/admin-edit/:id([0-9a-fA-F]{24})', async (req, res) => {
+    const id = req.params.id.trim()
+    const query = { _id: new ObjectId(id) }
+    const data = await mongoose.connection.db.collection("admins").findOne(query)
+    console.log(data)
+    res.send(data)
 })
 
 
