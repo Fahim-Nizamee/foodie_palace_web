@@ -8,6 +8,10 @@
     padding: 10px;
     transition: all .5s ease-in-out;
 }
+.product-card:hover{
+    transform: scale(0.95);
+    transition: 0.3s;
+}
 
 .product-card-img {
     height: 150px;

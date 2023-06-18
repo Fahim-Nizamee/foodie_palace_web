@@ -9,7 +9,7 @@ const PrivacyPolicy = () => {
     <div>
       <Navbar></Navbar>
       <div className='About'>
-      <div className='promHome'>
+      <div className='promHomes'>
           <h1><i className="fa-solid fa-utensils"></i> Foodie Palace</h1>
           <p>Always here to provide Food</p>
         </div>
