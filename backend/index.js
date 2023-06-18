@@ -6,13 +6,11 @@ const mongoose = require('mongoose');
 const ObjectId = require('mongodb').ObjectId
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken");
-const { Double } = require("mongodb");
 const jwtSecret = "MyNameIsFahimIAmAStudentOfIIUC##"
 
 mongoose.set('strictQuery', true)
 app.use(cors())
 app.use(express.json())
-// app.use(express.urlencoded())
 
 const mongoURI = 'mongodb+srv://fahim1:fahim1@cluster0.sosmzzm.mongodb.net/Foodie-Palace?retryWrites=true&w=majority';
 
@@ -49,27 +47,8 @@ const userSchema = new mongoose.Schema({
 const User = new mongoose.model("users", userSchema)
 
 
-
 app.get('/', (req, res) => {
     res.send('Yooooooooooooo')
-})
-
-//token ======================================
-app.post('/token', async (req, res) => {
-    const token = req.body.token
-    const user = await jwt.verify(token, jwtSecret, (err, res) => {
-        if (err) {
-            return "Not varified"
-        }
-
-        return res
-
-    })
-    if (user == "Not varified") {
-        res.send({ status: 'error', data: 'exp' })
-
-    }
-
 })
 
 
