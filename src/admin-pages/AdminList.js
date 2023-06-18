@@ -57,8 +57,8 @@ export default function AdminList() {
           <input className='form-control' type='text' name="address" placeholder='Address' value={user.address} onChange={onChange} />
           <select className='form-control' type='select' required name='status' value={user.status} onChange={onChange} >
             <option >Select Status</option>
-            <option vlaue='Rice' >Staff</option>
-            <option vlaue='Burger'>Owner</option>
+            <option vlaue='Staff' >Staff</option>
+            <option vlaue='Owner'>Owner</option>
           </select>
           <input className='form-control' type='email' name="email" placeholder='E-mail' value={user.email} onChange={onChange} />
           <input className='form-control' type='password' name="password" placeholder='Password' value={user.password} onChange={onChange} />
