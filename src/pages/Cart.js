@@ -22,11 +22,7 @@ export default function Cart() {
             navigate('/login')
         }
         else{
-            return(
-                <div>
-                <div className='warning text-center'>Successfully Ordered</div>
-                </div>
-            )
+            alert("Your Food on the way")
         }
     } 
     let totalPrice = data.reduce((total,foods)=>total + parseInt(foods.price),0)
