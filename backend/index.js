@@ -368,6 +368,7 @@ app.get('/admin-edit/:id([0-9a-fA-F]{24})', async (req, res) => {
     console.log(data)
     res.send(data)
 })
+//delete admin
 app.delete('/delete-admin/:id([0-9a-fA-F]{24})', async (req, res) => {
     const id = req.params.id.trim()
     const query = { _id: new ObjectId(id) }
