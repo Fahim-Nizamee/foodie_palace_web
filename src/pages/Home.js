@@ -68,16 +68,18 @@ export default function Home() {
         </div>
         <div className='popular' id='pop'>
           <h2><i class="fa-solid fa-fire-flame-curved"></i> Popular</h2>
+          <br />
           <div class="slider">
             <div class="slider-container shadow">
               <div class="slider-images">
-                <img src={img1} />
-                <img src={img2} />
                 <img src={img3} />
+                <img src={img2} />
+                <img src={img1} />
               </div>
             </div>
             </div>
         </div>
+        <br />
         <div className='popular'>
           {
             foodCat !== [] ? foodCat.map((data) => {
